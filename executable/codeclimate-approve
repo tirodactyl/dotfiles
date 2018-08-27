@@ -1,0 +1,56 @@
+#!/bin/sh
+
+##### EXAMPLE USAGE #####
+# $ codeclimate-approve -ccr=5a7e406569434b027b0024ed -pr=1661 -r="master merge into feature branch"
+#     CODECLIMATE_REPO = 5a7e406569434b027b0024ed
+#     PR_ID            = 1661
+#     YOUR_REASON      = master merge into feature branch
+#   {"data":{"id":"5aa6cc91796d3e180f00033b","type":"approvals","attributes":{"reason":"master merge into feature branch","created_at":"2018-03-12T18:53:05.972Z"},"relationships":{"author":{"data":{"id":"58a25cdb7fc6650ca9000305","type":"users"}},"pull_request":{"data":{"id":"5aa6a55144e2fb0001000f95","type":"pull_requests"}},"repo":{"data":{"id":"5a7e406569434b027b0024ed","type":"repos"}}}}}
+#
+# Note that this requires a key to be in ~/.config/codeclimate_api_token
+
+
+ i in "$@"
+do
+case $i in
+  -ccr=*|codeclimate_repo=*)
+  CODECLIMATE_REPO="${i#*=}"
+  shift # past argument=value
+  ;;
+  -pr=*|--pullrequest_id=*)
+  PR_ID="${i#*=}"
+  shift # past argument=value
+  ;;
+  -r=*|--reason=*)
+  YOUR_REASON="${i#*=}"
+  shift # past argument=value
+  ;;
+  *)
+        # unknown option
+  ;;
+esac
+done
+echo "  CODECLIMATE_REPO = ${CODECLIMATE_REPO}"
+echo "  PR_ID            = ${PR_ID}"
+echo "  YOUR_REASON      = ${YOUR_REASON}"
+
+generate_post_data()
+{
+  cat <<EOF
+{
+  "data": {
+    "attributes": {
+      "reason": "${YOUR_REASON}"
+    }
+  }
+}
+EOF
+}
+
+CODECLIMATE_TOKEN=$(cat ~/.config/codeclimate_api_token)
+
+curl -X "POST" "https://api.codeclimate.com/v1/repos/${CODECLIMATE_REPO}/pulls/${PR_ID}/approvals" \
+     -H "Content-Type: application/vnd.api+json" \
+     -H "Authorization: Token token=${CODECLIMATE_TOKEN}" \
+     -H "Accept: application/vnd.api+json" \
+     -d "$(generate_post_data)"

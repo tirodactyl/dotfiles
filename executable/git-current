@@ -1,0 +1,9 @@
+#!/bin/sh
+
+source "$(git --exec-path)/git-sh-setup"
+
+_git_current () {
+  git rev-parse --abbrev-ref HEAD
+}
+
+_git_current
