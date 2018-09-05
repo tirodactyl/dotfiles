@@ -1,0 +1,70 @@
+{
+    "title": ";+hjkl Mode",
+    "rules": [
+        {
+            "description": "Change ; to right_command when pressed with other keys (post ; when pressed alone).",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": ";",
+                        "modifiers": {
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [{"key_code": "right_command"}],
+                    "to_if_alone": [{"key_code": ";"}]
+                }
+            ]
+        },
+        {
+            "description": "Change right_command+hjkl to arrow keys.",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "h",
+                        "modifiers": {
+                            "mandatory": ["right_command"],
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [{"key_code": "left_arrow"}]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "j",
+                        "modifiers": {
+                            "mandatory": ["right_command"],
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [{"key_code": "down_arrow"}]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "k",
+                        "modifiers": {
+                            "mandatory": ["right_command"],
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [{"key_code": "up_arrow"}]
+                },
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "l",
+                        "modifiers": {
+                            "mandatory": ["right_command"],
+                            "optional": ["any"]
+                        }
+                    },
+                    "to": [{"key_code": "right_arrow"}]
+                }
+            ]
+        }
+    ]
+}
