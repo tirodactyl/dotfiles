@@ -11,17 +11,17 @@ echo "Installing dotfiles to local system..."
 
 #took some stuff from here...
 
-# symlink true dotfiles into ~/
+# symlink files into home
 echo "=== Creating symlinks for dotfiles in $HOME/"
 cd $dotfiles_path
-for name in symlink/*; do
+for name in home/*; do
   name=$(echo $name|cut -c 9-)
   target=$HOME/.$name
 
   if [ -e $target ]; then
     echo "WARNING: $target exists but not a symlink" && continue
   else
-    ln -s $dotfiles_path/symlink/$name $target
+    ln -s $dotfiles_path/home/$name $target
     echo "- linked to $target"
   fi
 done
