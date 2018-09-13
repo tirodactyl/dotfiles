@@ -43,5 +43,7 @@ done
 # go back to where you came from
 cd -
 
+./dep_install
+
 # this makes finder show hidden files by default
 defaults write com.apple.finder AppleShowAllFiles -boolean true ; killall Finder
