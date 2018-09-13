@@ -39,20 +39,3 @@ for file in $CONFIG_FILES; do
     echo "- $target"
   fi
 done
-
-# symlink directories and files in preferences/ to $HOME/Library/Preferences/
-echo "=== Creating symlinks for other configuration files in $HOME/.config/"
-PREF_FILES=$DIR/preferences/*
-mkdir -p "$TARGET_DIR/.config"
-
-for file in $PREF_FILES; do
-  target_file="$TARGET_DIR/Library/Preferences/`basename $file`"
-  source_file=$file
-
-  if [ -e $target ]; then
-    echo "WARNING: $target exists but not a symlink" && continue
-  else
-    ln -s $source_file $target_file
-    echo "- $target"
-  fi
-done
