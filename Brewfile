@@ -1,72 +1,102 @@
 cask_args appdir: '/Applications'
 
+# =========================================================
+# Tap some casks
+# =========================================================
 tap 'caskroom/cask'
-tap 'homebrew/bundle'
+tap 'caskroom/fonts'
+tap 'caskroom/versions'
 tap 'heroku/brew'
+tap 'homebrew/bundle'
 
-===============================================
+# =========================================================
+# Quicklook extensions
+# =========================================================
+cask 'qlcolorcode'
+cask 'qlimagesize'
+cask 'qlmarkdown'
+cask 'qlprettypatch'
+cask 'qlstephen'
+cask 'quicklook-csv'
+cask 'quicklook-json'
+cask 'webpquicklook'
+
+# =========================================================
+# Font me (includes Powerline patch in base font)
+# =========================================================
+cask 'font-source-code-pro'
+
+# ===============================================
 # Development
 # ===============================================
 
 # *Nix Tools
-
-brew 'coreutils'
 brew 'autoconf'
 brew 'automake'
 brew 'cmake'
-brew 'cscope'
-brew 'libpng'
-brew 'freetype'
-brew 'jpeg'
-brew 'libtiff'
-brew 'xz'
-brew 'imagemagick'
+brew 'coreutils'
+brew 'makedepend'
 brew 'pcre'
-brew 'qt', link: true
 brew 'wget'
 
+# Development tools
 brew 'bcrypt'
-brew 'ack'
-brew 'git'
-brew 'git-crypt'
-brew 'tig'
-brew 'neovim'
-brew 'the_silver_searcher'
-brew 'ripgrep'
-brew 'tmux', args: ['HEAD']
 brew 'fzf'
-brew 'tree'
+brew 'git'
+brew 'heroku/brew/heroku'
+brew 'htop'
+brew 'httpie'
+brew 'hub'
+cask 'karabiner-elements'
+brew 'neovim'
+system 'pip3 install neovim'
+brew 'p7zip'
 brew 'reattach-to-user-namespace'
+brew 'ripgrep'
+brew 'tig'
+brew 'tmux', args: ['HEAD']
+brew 'tree'
+brew 'universal-ctags/universal-ctags/universal-ctags', args: ['HEAD']
+brew 'watchman'
+brew 'zsh'
 
-# Deployment / Management Tools
+# Libraries
+brew 'imagemagick', args: ['with-libtiff', 'with-little-cms', 'with-ghostscript']
 
+# Languages
+brew 'go'
+brew 'dep'
 brew 'rbenv'
 brew 'nodenv'
-brew 'yarn'
-brew 'go'
-brew 'heroku/brew/heroku'
+brew 'yarn', args: ['without-node']
 
 # Databases
+brew 'mysql', restart_service: :changed
+brew 'postgresql', restart_service: :changed
+brew 'redis', restart_service: :changed
 
-brew 'redis', restart_service: true
-brew 'mysql', restart_service: true
-brew 'postgresql', restart_service: true
+# Tools that require passwords
+brew 'elasticsearch', restart_service: :changed
 cask "caskroom/versions/java8"
-brew 'elasticsearch', restart_service: true
 
 # ===============================================
 # Applications
 # ===============================================
-
-brew 'pianobar'
-
-cask 'dashlane'
-cask 'iterm2'
-cask 'vlc'
-cask 'slack'
 cask 'alfred'
-cask 'sequel-pro'
-cask 'postman'
 cask 'dash'
+cask 'dashlane'
 cask 'firefox'
+cask 'firefox-developer-edition'
+cask 'flux'
 cask 'google-chrome'
+cask 'iterm2'
+cask 'keepingyouawake'
+brew 'pianobar'
+cask 'postman'
+cask 'sequel-pro'
+cask 'slack'
+cask 'spotify'
+cask 'vlc'
+
+mas 'Magnet', id: 441258766
+mas 'The Unarchiver', id: 425424353
