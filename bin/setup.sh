@@ -20,15 +20,21 @@ cd $HOME/dev/tirodactyl/dotfiles && git pull
 echo "\n Installing XCode dev tools"
 xcode-select --install
 
-echo "\n Symlinking dotfiles"
-sh ./bin/link.sh
-
 echo "\n Installing Homebrew"
 sudo chown -R $USER /usr/local
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 echo "\n Installing homebrew dependencies"
 brew bundle
+
+echo "\n Symlinking dotfiles"
+sh ./bin/link.sh
+
+echo "\n Installing oh-my-zsh..."
+git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+
+echo "\n Make zsh the default shell"
+chsh -s /bin/zsh
 
 echo "\n Installing FZF shell extensions"
 /usr/local/opt/fzf/install
