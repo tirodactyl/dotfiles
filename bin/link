@@ -1,41 +1,58 @@
-#!/bin/sh
-
-current_dir=$(dirname $0)
-dotfiles_path=$PWD/$current_dir
-# vimfiles_path=$dotfiles_path/vimfiles
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+# The above lines found in this article: https://dev.to/thiht/shell-scripts-matter
 
 echo "Installing dotfiles to local system..."
+DIR=`dirname $(cd $(dirname $0) && pwd -P)`
+TARGET_DIR="$HOME"
 
-#took some stuff from here...
-
-# symlink files into home
+# symlink top-level dotfiles to $HOME/
 echo "=== Creating symlinks for dotfiles in $HOME/"
-cd $dotfiles_path
-for name in home/*; do
-  name=$(echo $name|cut -c 9-)
-  target=$HOME/.$name
+DOTFILES=$DIR/home/.[a-z]*
+
+for file in $DOTFILES; do
+  target_file="$TARGET_DIR/`basename $file`"
+  source_file=$file
 
   if [ -e $target ]; then
     echo "WARNING: $target exists but not a symlink" && continue
   else
-    ln -s $dotfiles_path/home/$name $target
-    echo "- linked to $target"
+    ln -s $source_file $target_file
+    echo "- $target"
   fi
 done
 
-# symlink into .config
+# symlink directories and files in .config/ to $HOME/.config/
 echo "=== Creating symlinks for other configuration files in $HOME/.config/"
-for name in config/*; do
-  name=$(echo $name|cut -c 9-)
-  target=$HOME/.config/$name
+CONFIG_FILES=$DIR/.config/*
+mkdir -p "$TARGET_DIR/.config"
+
+for file in $CONFIG_FILES; do
+  target_file="$TARGET_DIR/.config/`basename $file`"
+  source_file=$file
 
   if [ -e $target ]; then
     echo "WARNING: $target exists but not a symlink" && continue
   else
-    ln -s $dotfiles_path/config/$name $target
-    echo "- linked to $target"
+    ln -s $source_file $target_file
+    echo "- $target"
   fi
 done
 
-# go back to where you came from
-cd -
+# symlink directories and files in preferences/ to $HOME/Library/Preferences/
+echo "=== Creating symlinks for other configuration files in $HOME/.config/"
+PREF_FILES=$DIR/preferences/*
+mkdir -p "$TARGET_DIR/.config"
+
+for file in $PREF_FILES; do
+  target_file="$TARGET_DIR/Library/Preferences/`basename $file`"
+  source_file=$file
+
+  if [ -e $target ]; then
+    echo "WARNING: $target exists but not a symlink" && continue
+  else
+    ln -s $source_file $target_file
+    echo "- $target"
+  fi
+done
