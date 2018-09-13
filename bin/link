@@ -1,7 +1,4 @@
-#!/bin/bash
-set -euo pipefail
-IFS=$'\n\t'
-# The above lines found in this article: https://dev.to/thiht/shell-scripts-matter
+#!/bin/sh
 
 current_dir=$(dirname $0)
 dotfiles_path=$PWD/$current_dir
@@ -42,8 +39,3 @@ done
 
 # go back to where you came from
 cd -
-
-./dep_install
-
-# this makes finder show hidden files by default
-defaults write com.apple.finder AppleShowAllFiles -boolean true ; killall Finder
