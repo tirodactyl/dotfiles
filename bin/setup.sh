@@ -3,17 +3,25 @@ set -euo pipefail
 IFS=$'\n\t'
 # The above lines found in this article: https://dev.to/thiht/shell-scripts-matter
 
-# =====================================================
-# Install script for Tirso's dependencies and dotfiles
-# =====================================================
-
 RUBY_VERSION="2.5.1"
 NODE_VERSION="8.11.1"
 
-cd ~/dotfiles
+# Ask for the administrator password upfront
+sudo -v
 
-echo "\n Installing dev tools"
+# Keep-alive: update existing `sudo` time stamp until script has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+echo "Gathering dependencies"
+mkdir -p $HOME/dev/tirodactyl
+git clone https://github.com/tirodactyl/dotfiles.git $HOME/dev/tirodactyl/dotfiles
+cd $HOME/dev/tirodactyl/dotfiles && git pull
+
+echo "\n Installing XCode dev tools"
 xcode-select --install
+
+echo "\n Symlinking dotfiles"
+sh ./bin/link.sh
 
 echo "\n Installing Homebrew"
 sudo chown -R $USER /usr/local
@@ -22,25 +30,25 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 echo "\n Installing homebrew dependencies"
 brew bundle
 
-echo "\n Symlinking dotfiles"
-sh ./bin/link.sh
-
-# echo "\n Installing git-aware-prompt"
-# cd ~/.bash && git clone git://github.com/jimeh/git-aware-prompt.git
-# cd ~/dotfiles
+echo "\n Installing FZF shell extensions"
+/usr/local/opt/fzf/install
 
 echo "\n Setting up Ruby"
 eval "$(rbenv init -)" 2> /dev/null
+git clone git://github.com/tpope/rbenv-ctags.git ~/.rbenv/plugins/rbenv-ctags 2>/dev/null
 rbenv install $RUBY_VERSION
 rbenv global $RUBY_VERSION
+gem install --conservative gem-ctags bundler rubocop
 
 echo "\n Setting up Node"
 eval "$(nodenv init -)" 2> /dev/null
 nodenv install $NODE_VERSION
 nodenv global $NODE_VERSION
-yarn global add eslint
+yarn global add eslint typescript
 
-# this makes finder show hidden files by default
-defaults write com.apple.finder AppleShowAllFiles -boolean true ; killall Finder
+echo "\n Copying over old preferences"
+chmod 0600 ./plists/*
+cp -R ./plists/ ~/Library/Preferences/
 
-
+echo "\n Configuring miscellaneous OSX settings"
+./bin/configure.sh
