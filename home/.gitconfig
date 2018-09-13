@@ -1,0 +1,14 @@
+[user]
+	name = Tirso Peguero
+	email = tito.peguero@gmail.com
+[alias]
+	co = checkout
+	st = status
+	ci = commit
+	br = branch
+	nuke = !sh -c 'git branch -D $1 && git push origin :$1'
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	lg = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr %an)%Creset' --abbrev-commit --date=relative
+	hist = log --pretty=format:'%Cred%h%Creset %ad | %s%C(yellow)%d%Creset %Cgreen[%an]%Creset' --graph --date=short
+
