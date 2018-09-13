@@ -22,20 +22,3 @@ for file in $DOTFILES; do
     echo "- $target"
   fi
 done
-
-# symlink directories and files in .config/ to $HOME/.config/
-echo "=== Creating symlinks for other configuration files in $HOME/.config/"
-CONFIG_FILES=$DIR/.config/*
-mkdir -p "$TARGET_DIR/.config"
-
-for file in $CONFIG_FILES; do
-  target_file="$TARGET_DIR/.config/`basename $file`"
-  source_file=$file
-
-  if [ -e $target ]; then
-    echo "WARNING: $target exists but not a symlink" && continue
-  else
-    ln -s $source_file $target_file
-    echo "- $target"
-  fi
-done
