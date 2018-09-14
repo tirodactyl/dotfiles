@@ -8,6 +8,7 @@ tap 'caskroom/fonts'
 tap 'caskroom/versions'
 tap 'heroku/brew'
 tap 'homebrew/bundle'
+tap 'universal-ctags/universal-ctags'
 
 # =========================================================
 # Quicklook extensions
