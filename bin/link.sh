@@ -15,10 +15,10 @@ for file in $DOTFILES; do
   target_file="$TARGET_DIR/`basename $file`"
   source_file=$file
 
-  if [ -e $target ]; then
-    echo "WARNING: $target exists but not a symlink" && continue
+  if [ -e $target_file ]; then
+    echo "- WARNING: $target_file already exists" && continue
   else
     ln -s $source_file $target_file
-    echo "- $target"
+    echo "- linked at $target_file"
   fi
 done
