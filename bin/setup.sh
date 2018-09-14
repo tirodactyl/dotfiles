@@ -27,9 +27,6 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 echo "\n Installing homebrew dependencies"
 brew bundle
 
-echo "\n Symlinking dotfiles"
-sh ./bin/link.sh
-
 echo "\n Installing oh-my-zsh..."
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
@@ -38,6 +35,9 @@ chsh -s /bin/zsh
 
 echo "\n Installing FZF shell extensions"
 /usr/local/opt/fzf/install
+
+echo "\n Symlinking dotfiles"
+sh ./bin/link.sh
 
 echo "\n Setting up Ruby"
 eval "$(rbenv init -)" 2> /dev/null
@@ -51,6 +51,9 @@ eval "$(nodenv init -)" 2> /dev/null
 nodenv install $NODE_VERSION
 nodenv global $NODE_VERSION
 yarn global add eslint typescript
+
+echo "\n Setting up Go"
+mkdir -p $HOME/dev/golang
 
 echo "\n Copying over old preferences"
 chmod 0600 ./plists/*
