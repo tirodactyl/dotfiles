@@ -6,7 +6,13 @@ ZSH_CUSTOM=$XDG_CONGIF_HOME/zsh
 
 # Source oh-my-zsh
 plugins=(
-  git
+  colored-man-pages
+  command-not-found
+  cp
+  gitfast
+  golang
+  osx
+  rake-fast
 )
 
 source $ZSH/oh-my-zsh.sh
