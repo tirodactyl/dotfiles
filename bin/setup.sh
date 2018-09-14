@@ -18,8 +18,13 @@ git clone https://github.com/tirodactyl/dotfiles.git $HOME/dev/tirodactyl/dotfil
 cd $HOME/dev/tirodactyl/dotfiles && git pull
 
 echo "\n Installing Homebrew"
-sudo chown -R $USER /usr/local
+# see: github.com/kickstarter/laptop/pull/49 & github.com/Homebrew/brew/issues/3228
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+sudo mkdir /usr/local/Cellar
+sudo mkdir /usr/local/Frameworks
+sudo mkdir /usr/local/include
+sudo mkdir /usr/local/opt
+sudo chown -R $(whoami) $(brew --prefix)/*
 
 echo "\n Installing homebrew dependencies"
 brew bundle
