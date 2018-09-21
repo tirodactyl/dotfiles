@@ -4,7 +4,7 @@ IFS=$'\n\t'
 # The above lines found in this article: https://dev.to/thiht/shell-scripts-matter
 
 RUBY_VERSION="2.5.1"
-NODE_VERSION="8.12.0"
+NODE_VERSION="8.11.1"
 
 # Ask for the administrator password upfront
 sudo -v

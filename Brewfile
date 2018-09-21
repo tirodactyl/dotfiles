@@ -76,16 +76,15 @@ brew 'mysql', restart_service: :changed
 brew 'postgresql', restart_service: :changed
 brew 'redis', restart_service: :changed
 
-# Tools that require passwords
-brew 'elasticsearch', restart_service: :changed
+# Java things that require password
 cask "caskroom/versions/java8"
+brew 'elasticsearch', restart_service: :changed
 
 # ===============================================
 # Applications
 # ===============================================
 cask 'alfred'
 cask 'dash'
-cask 'dashlane'
 cask 'firefox'
 cask 'firefox-developer-edition'
 cask 'flux'
@@ -101,3 +100,4 @@ cask 'vlc'
 
 mas 'Magnet', id: 441258766
 mas 'The Unarchiver', id: 425424353
+mas 'Dashlane - Password Manager', id: 552383089
