@@ -12,3 +12,5 @@
 	lg = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr %an)%Creset' --abbrev-commit --date=relative
 	hist = log --pretty=format:'%Cred%h%Creset %ad | %s%C(yellow)%d%Creset %Cgreen[%an]%Creset' --graph --date=short
 
+[core]
+	excludesfile = /Users/tirso/.gitignore_global
