@@ -18,7 +18,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Add custom scripts to path
 export PROJECTS_PATH="$HOME/dev"
