@@ -1,9 +1,10 @@
 XDG_CONFIG_HOME=$HOME/.config
 ZSH=$HOME/.oh-my-zsh
+ZSH_CUSTOM=$XDG_CONFIG_HOME/zsh
+
+# Theme
 ZSH_THEME="agnoster"
-# this is for the agnoster theme
 DEFAULT_USER="tirso"
-ZSH_CUSTOM=$XDG_CONGIF_HOME/zsh
 
 # Source oh-my-zsh
 plugins=(
@@ -14,11 +15,10 @@ plugins=(
   golang
   osx
   rake-fast
+  tirso
 )
 
 source $ZSH/oh-my-zsh.sh
-
-export EDITOR='nvim'
 
 # Add custom scripts to path
 export PROJECTS_PATH="$HOME/dev"

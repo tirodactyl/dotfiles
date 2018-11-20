@@ -1,6 +1,6 @@
 alias reload='source ~/.bashrc'
 
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Add custom scripts to path
 export PROJECTS_PATH="$HOME/dev"
