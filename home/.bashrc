@@ -1,5 +1,8 @@
 alias reload='source ~/.bashrc'
 
+# Make it easy to add machine-specific config
+source ~/.bashrc.local
+
 export EDITOR='nvim'
 
 # Add custom scripts to path

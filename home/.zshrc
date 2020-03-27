@@ -20,6 +20,9 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# Make it easy to add machine-specific config
+source ~/.zshrc.local
+
 # Add custom scripts to path
 export PROJECTS_PATH="$HOME/dev"
 export PATH="$HOME/.bin:$PATH"

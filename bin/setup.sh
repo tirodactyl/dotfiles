@@ -37,6 +37,10 @@ echo "\n Installing FZF shell extensions"
 echo "\n Symlinking dotfiles"
 sh ./bin/link.sh
 
+echo "\n Generating local config"
+touch ~/.bashrc.local
+touch ~/.zshrc.local
+
 echo "\n Setting up tmux"
 mkdir -p ~/.tmux/plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
