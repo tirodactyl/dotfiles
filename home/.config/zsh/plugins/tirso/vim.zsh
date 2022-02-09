@@ -3,10 +3,17 @@ export KEYTIMEOUT=1
 # Vim mode block cursor
 function zle-keymap-select zle-line-init {
   # change cursor shape in iTerm2
-  case $KEYMAP in
-    vicmd)      print -n -- "\E]50;CursorShape=0\C-G";;  # block cursor
-    viins|main) print -n -- "\E]50;CursorShape=1\C-G";;  # line cursor
-  esac
+  if [[ -z $TMUX ]]; then
+    case $KEYMAP in
+      vicmd)      print -n -- "\E]50;CursorShape=0\C-G";;  # block cursor
+      viins|main) print -n -- "\E]50;CursorShape=1\C-G";;  # line cursor
+    esac
+  else
+    case $KEYMAP in
+      vicmd)      print -n -- "\EPtmux;\E\E]50;CursorShape=0\C-G\E\\";;  # block cursor
+      viins|main) print -n -- "\EPtmux;\E\E]50;CursorShape=1\C-G\E\\";;  # line cursor
+    esac
+  fi
 
   zle reset-prompt
   zle -R
