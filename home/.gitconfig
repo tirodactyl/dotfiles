@@ -11,6 +11,7 @@
 	last = log -1 HEAD
 	lg = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr %an)%Creset' --abbrev-commit --date=relative
 	hist = log --pretty=format:'%Cred%h%Creset %ad | %s%C(yellow)%d%Creset %Cgreen[%an]%Creset' --graph --date=short
+	summon = "!summon () { b=$1; git fetch origin +refs/heads/$b:refs/remotes/origin/$b $b:$b; }; summon"
 
 [core]
 	excludesfile = /Users/tirso/.ignore
