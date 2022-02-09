@@ -45,6 +45,11 @@ echo "\n Setting up tmux"
 mkdir -p ~/.tmux/plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+echo "\n Downloading & rebuilding terminfo for tmux-256color"
+curl -LO http://invisible-island.net/datafiles/current/terminfo.src.gz
+gunzip terminfo.src.gz
+tic -x terminfo.src
+
 echo "\n Setting up Ruby"
 eval "$(rbenv init -)" 2> /dev/null
 git clone git://github.com/tpope/rbenv-ctags.git ~/.rbenv/plugins/rbenv-ctags 2>/dev/null
