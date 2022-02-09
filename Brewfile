@@ -42,6 +42,7 @@ brew 'wget'
 
 # Development tools
 brew 'bcrypt'
+brew 'direnv'
 brew 'docker'
 brew 'fzf'
 brew 'git'
