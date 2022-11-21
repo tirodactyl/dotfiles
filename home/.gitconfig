@@ -1,6 +1,6 @@
 [user]
 	name = Tirso Peguero
-	email = tito.peguero@gmail.com
+	email = tirso.peguero@samsara.com
 [alias]
 	co = checkout
 	st = status
@@ -13,5 +13,14 @@
 	hist = log --pretty=format:'%Cred%h%Creset %ad | %s%C(yellow)%d%Creset %Cgreen[%an]%Creset' --graph --date=short
 	summon = "!summon () { b=$1; git fetch origin +refs/heads/$b:refs/remotes/origin/$b $b:$b; }; summon"
 
+[branch "master"]
+	rebase = true
+[merge "ours"]
+	driver = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 [core]
-	excludesfile = /Users/tirso/.ignore
+	excludesfile = /Users/tirsopeguero/.ignore

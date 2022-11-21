@@ -25,3 +25,4 @@ alias piano='pianobar'
 alias ql='qlmanage -p 2>/dev/null'
 alias rd='rmdir'
 alias safari='open -a safari'
+alias trl="taskrunner --list | fzf | xargs taskrunner"

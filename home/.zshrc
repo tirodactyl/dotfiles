@@ -4,7 +4,7 @@ ZSH_CUSTOM=$XDG_CONFIG_HOME/zsh
 
 # Theme
 ZSH_THEME="agnoster"
-DEFAULT_USER="tirso"
+DEFAULT_USER="tirsopeguero"
 
 # Source oh-my-zsh
 plugins=(
@@ -51,3 +51,11 @@ alias reload='source ~/.zshrc'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 eval "$(direnv hook zsh)"
+
+eval "$(pyenv init -)"
+export PATH="/usr/local/opt/openjdk@8/bin:$PATH"
+autoload bashcompinit
+bashcompinit
+if [ -f /Users/tirsopeguero/co/backend/bin/taskrunner-completion.bash ]; then
+  . /Users/tirsopeguero/co/backend/bin/taskrunner-completion.bash
+fi
