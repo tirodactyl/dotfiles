@@ -26,8 +26,8 @@ cd $HOME/dev/tirodactyl/dotfiles && git pull && git checkout samsara
 
 echo "\n Installing Homebrew"
 # see: github.com/kickstarter/laptop/pull/49 & github.com/Homebrew/brew/issues/3228
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-sudo chown -R $(whoami) $(brew --prefix)/*
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# sudo chown -R $(whoami) $(brew --prefix)/*
 
 echo "\n Installing homebrew dependencies"
 brew bundle
