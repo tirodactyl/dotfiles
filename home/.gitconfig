@@ -23,4 +23,4 @@
 	process = git-lfs filter-process
 	required = true
 [core]
-	excludesfile = /Users/tirsopeguero/.ignore
+	excludesfile = /Users/tirso.peguero/.ignore
