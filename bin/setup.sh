@@ -25,7 +25,7 @@ git clone https://github.com/tirodactyl/dotfiles.git $HOME/dev/tirodactyl/dotfil
 cd $HOME/dev/tirodactyl/dotfiles && git pull && git checkout samsara
 
 echo "\n Installing Homebrew"
-bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 # see: github.com/kickstarter/laptop/pull/49 & github.com/Homebrew/brew/issues/3228
 # sudo chown -R $(whoami) $(brew --prefix)/*
 
