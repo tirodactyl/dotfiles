@@ -3,12 +3,11 @@ cask_args appdir: '/Applications'
 # =========================================================
 # Tap some casks
 # =========================================================
-tap 'caskroom/cask'
-tap 'caskroom/fonts'
-tap 'caskroom/versions'
-tap 'heroku/brew'
+tap 'homebrew/cask'
 tap 'homebrew/bundle'
-tap 'universal-ctags/universal-ctags'
+tap 'homebrew/core'
+# for font support
+tap 'homebrew/cask-fonts'
 
 # =========================================================
 # Quicklook extensions
@@ -41,36 +40,33 @@ brew 'pcre'
 brew 'wget'
 
 # Development tools
-brew 'bcrypt'
+brew 'cmake'
 brew 'direnv'
-brew 'docker'
 brew 'fzf'
 brew 'git'
-brew 'heroku/brew/heroku'
 brew 'htop'
 brew 'httpie'
 brew 'hub'
-cask 'karabiner-elements'
 brew 'neovim'
 system 'pip3 install neovim'
 brew 'p7zip'
 brew 'reattach-to-user-namespace'
 brew 'ripgrep'
 brew 'tig'
-brew 'tmux', args: ['HEAD']
+brew 'tmux'
 brew 'tree'
 brew 'universal-ctags/universal-ctags/universal-ctags', args: ['HEAD']
 brew 'watchman'
 brew 'zsh'
 
 # Libraries
-brew 'imagemagick', args: ['with-libtiff', 'with-little-cms', 'with-ghostscript']
 
 # Languages
-brew 'go'
 brew 'dep'
-brew 'rbenv'
+brew 'go'
 brew 'nodenv'
+brew 'rbenv'
+brew 'rust'
 brew 'yarn', args: ['without-node']
 
 # Databases
@@ -82,25 +78,37 @@ brew 'redis', restart_service: :changed
 cask "caskroom/versions/java8"
 brew 'elasticsearch', restart_service: :changed
 
+# Keyboard things
+# GNU compiler collection for AVR 8-bit and 32-bit Microcontrollers
+brew "osx-cross/avr/avr-gcc@8"
+# GNU compiler collection for AVR 8-bit and 32-bit Microcontrollers
+brew "osx-cross/avr/avr-gcc@9"
+# Quantum Mechanical Keyboard (QMK) Firmware
+brew "qmk/qmk/qmk"
+# Toolbox companion for QMK Firmware
+cask "qmk-toolbox"
+
 # ===============================================
 # Applications
 # ===============================================
 cask 'alfred'
 cask 'dash'
-cask 'firefox'
+cask 'docker'
 cask 'firefox-developer-edition'
-cask 'flux'
 cask 'google-chrome'
 cask 'iterm2'
-cask 'keepingyouawake'
-cask 'licecap'
-brew 'pianobar'
+cask 'karabiner-elements'
+cask 'meetingbar'
 cask 'postman'
-cask 'sequel-pro'
 cask 'slack'
 cask 'spotify'
 cask 'vlc'
+cask 'zoom'
 
+# From Mac App Store
+brew 'mas'
+
+mas 'Amphetamine', id: 937984704
 mas 'Magnet', id: 441258766
 mas 'The Unarchiver', id: 425424353
-mas 'Dashlane - Password Manager', id: 552383089
+mas "Xcode", id: 497799835
