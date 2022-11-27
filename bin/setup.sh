@@ -15,7 +15,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 echo "Gathering dependencies"
 mkdir -p $HOME/dev/tirodactyl
 git clone https://github.com/tirodactyl/dotfiles.git $HOME/dev/tirodactyl/dotfiles
-cd $HOME/dev/tirodactyl/dotfiles && git pull
+cd $HOME/dev/tirodactyl/dotfiles && git pull && git checkout samsara
 
 echo "\n Installing Homebrew"
 # see: github.com/kickstarter/laptop/pull/49 & github.com/Homebrew/brew/issues/3228
