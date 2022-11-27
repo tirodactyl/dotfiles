@@ -3019,7 +3019,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/tirsopeguero/dev/tirodactyl/dotfiles/plists</string>
+	<string>/Users/tirso.peguero/dev/tirodactyl/dotfiles/plists</string>
 	<key>PromptOnQuit</key>
 	<true/>
 	<key>QuitWhenAllWindowsClosed</key>
