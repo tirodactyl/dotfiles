@@ -13,7 +13,11 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Install xcode
+
+echo "Installing xcode command line tools"
 xcode-select --install
+
+read -p "Press ENTER to continue once command line tools are installed"
 
 echo "Gathering dependencies"
 mkdir -p $HOME/dev/tirodactyl
