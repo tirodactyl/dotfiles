@@ -26,6 +26,7 @@ cd $HOME/dev/tirodactyl/dotfiles && git pull && git checkout samsara
 
 echo "\n Installing Homebrew"
 NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 # see: github.com/kickstarter/laptop/pull/49 & github.com/Homebrew/brew/issues/3228
 # sudo chown -R $(whoami) $(brew --prefix)/*
 

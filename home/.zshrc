@@ -27,6 +27,9 @@ source ~/.zshrc.local
 export PROJECTS_PATH="$HOME/dev"
 export PATH="$HOME/.bin:$PATH"
 
+# Set PATH, MANPATH, etc., for Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init --no-rehash -)" 2> /dev/null
