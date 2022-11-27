@@ -6,6 +6,11 @@ cask_args appdir: '/Applications'
 tap 'homebrew/cask'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
+# for java
+tap 'homebrew/cask-versions'
+# for keyboards
+# tap 'osx-cross/avr'
+# tap 'qmk/qmk'
 # for font support
 tap 'homebrew/cask-fonts'
 
@@ -55,7 +60,7 @@ brew 'ripgrep'
 brew 'tig'
 brew 'tmux'
 brew 'tree'
-brew 'universal-ctags/universal-ctags/universal-ctags', args: ['HEAD']
+brew 'universal-ctags', args: ['HEAD']
 brew 'watchman'
 brew 'zsh'
 
@@ -67,7 +72,7 @@ brew 'go'
 brew 'nodenv'
 brew 'rbenv'
 brew 'rust'
-brew 'yarn', args: ['without-node']
+brew 'yarn'
 
 # Databases
 brew 'mysql', restart_service: :changed
@@ -76,17 +81,16 @@ brew 'redis', restart_service: :changed
 
 # Java things that require password
 cask "caskroom/versions/java8"
-brew 'elasticsearch', restart_service: :changed
 
 # Keyboard things
 # GNU compiler collection for AVR 8-bit and 32-bit Microcontrollers
-brew "osx-cross/avr/avr-gcc@8"
+# brew "osx-cross/avr/avr-gcc@8"
 # GNU compiler collection for AVR 8-bit and 32-bit Microcontrollers
-brew "osx-cross/avr/avr-gcc@9"
+# brew "osx-cross/avr/avr-gcc@9"
 # Quantum Mechanical Keyboard (QMK) Firmware
-brew "qmk/qmk/qmk"
+# brew "qmk/qmk/qmk"
 # Toolbox companion for QMK Firmware
-cask "qmk-toolbox"
+# cask "qmk-toolbox"
 
 # ===============================================
 # Applications
